@@ -1,32 +1,14 @@
-// Remove 'disabled' class on <section id="flight"> and replace it with a class of 'enabled'.
-const flightHandlerFunction = () => {
-	console.log('Clicked activate flight button');
-    let flightClasses = document.querySelector('#flight');
+// one function to handle activating a power depending on which button is clicked
+const powerHandlerFunction = () => {
+    let sectionClasses = event.target.id.split('-');
+    let flightClasses = document.querySelector(`#${sectionClasses[1]}`);
     flightClasses.classList.toggle('disabled');
 	flightClasses.classList.toggle('enabled');
-	console.log(flightClasses);
-};
-/* 
-Write two more JavaScript functions, and two more querySelector().addEventListener() statements 
-for handling the click event on the other two buttons. 
-*/
-const mindreadingHandlerFunction = () => {
-    let mindreadingClasses = document.querySelector('#mindreading');
-    console.log(mindreadingClasses);
-    mindreadingClasses.classList.toggle('disabled');
-    mindreadingClasses.classList.toggle('enabled');
 };
 
-const xrayHandlerFunction = () => {
-    let xrayClasses = document.querySelector('#xray');
-    console.log(xrayClasses);
-    xrayClasses.classList.toggle('disabled');
-    xrayClasses.classList.toggle('enabled');
-}
-
-document.querySelector('#activate-flight').addEventListener('click', flightHandlerFunction);
-document.querySelector("#activate-mindreading").addEventListener("click", mindreadingHandlerFunction);
-document.querySelector("#activate-xray").addEventListener("click", xrayHandlerFunction);
+document.querySelector('#activate-flight').addEventListener('click', powerHandlerFunction);
+document.querySelector('#activate-mindreading').addEventListener('click', powerHandlerFunction);
+document.querySelector('#activate-xray').addEventListener('click', powerHandlerFunction);
 
 /* 
 Write two more event handlers for activating and deactivating all powers 
@@ -34,7 +16,6 @@ when the corresponding buttons are clicked.
 
 You will need to use the document.querySelectorAll() method for these.
  */
-
 const deactivateAllPowers = () => {
     let powerList = document.querySelectorAll("#powerList > section");
     console.log(powerList);
